@@ -18,8 +18,8 @@ provides: [String.tuUTF8]
 String.implement({
     'toUTF8': function()
     {
-        var utftext = '';
-        string = this.replace(/\r\n/g,"\n");
+        var utftext = '',
+            string = this.replace(/\r\n/g,"\n");
         
         for (var n = 0, l = string.length; n < l; n++)
         {
