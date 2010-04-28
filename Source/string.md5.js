@@ -31,10 +31,10 @@ provides: [String.toMD5]
     {
     	function RotateLeft(lValue, iShiftBits)
         {
-    		return (lValue<<iShiftBits) | (lValue>>>(32-iShiftBits));
+    		return (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits));
     	}
      
-    	function AddUnsigned(lX,lY)
+    	function AddUnsigned(lX, lY)
         {
     		var lX8 = (lX & 0x80000000),
         		lY8 = (lY & 0x80000000),
@@ -132,6 +132,7 @@ provides: [String.toMD5]
     		lWordArray[lWordCount] = lWordArray[lWordCount] | (0x80<<lBytePosition);
     		lWordArray[lNumberOfWords - 2] = lMessageLength << 3;
     		lWordArray[lNumberOfWords - 1] = lMessageLength >>> 29;
+            
     		return lWordArray;
     	}
      
@@ -142,7 +143,7 @@ provides: [String.toMD5]
                 lByte,
                 lCount;
                 
-    		for (lCount = 0;lCount<=3;lCount++)
+    		for (lCount = 0; lCount <= 3; lCount++)
             {
     			lByte = (lValue >>> (lCount * 8)) & 255;
     			WordToHexValue_temp = "0" + lByte.toString(16);

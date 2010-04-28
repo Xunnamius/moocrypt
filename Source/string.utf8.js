@@ -10,7 +10,7 @@ authors:
 requires:
 - core/1.2.4: String
 
-provides: [String.tuUTF8]
+provides: [String.toUTF8]
 
 ...
 */
