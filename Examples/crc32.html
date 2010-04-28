@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <title>String Cryptography: String.toCRC32()</title>
+    </head>
+    <body>
+        <div id="from">Chris the Developer</div>
+        <div id="to"></div>
+        <div id="compare">1911945355</div>
+        <script type="text/javascript" src="mootools.1.3.beta.1.js"></script>
+        <script type="text/javascript" src="../Source/string.utf8.js"></script>
+        <script type="text/javascript" src="../Source/string.crc32.js"></script>
+        <script type="text/javascript">
+            window.addEvent('domready', function() {
+                var from = document.id('from'),
+                    to = document.id('to');
+                    
+                to.set('text', from.get('text').toCRC32());
+            });
+        </script>
+    </body>
+</html>
