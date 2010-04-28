@@ -15,33 +15,39 @@ provides: [String.toUTF8]
 ...
 */
 
-String.implement({
-    'toUTF8': function()
+(function() {
+    
+    function from(c)
     {
-        var utftext = '',
-            string = this.replace(/\r\n/g,"\n");
-        
-        for (var n = 0, l = string.length; n < l; n++)
-        {
-            var c = string.charCodeAt(n);
-            
-            if (c < 128)
-            {
-                utftext += String.fromCharCode(c);
-            }
-            else if ((c > 127) && (c < 2048))
-            {
-                utftext += String.fromCharCode((c >> 6) | 192);
-                utftext += String.fromCharCode((c & 63) | 128);
-            }
-            else
-            {
-                utftext += String.fromCharCode((c >> 12) | 224);
-                utftext += String.fromCharCode(((c >> 6) & 63) | 128);
-                utftext += String.fromCharCode((c & 63) | 128);
-            }
-        }
-        
-        return utftext;
+        return String.fromCharCode(c);
     }
-});
+
+    String.implement({
+        'toUTF8': function()
+        {
+            var a, b, c = '';
+            
+            for (a = 0; b = this.charCodeAt(a); a++)
+            {
+                if (b < 128)
+                {
+                    c += from(b);
+                }
+                else if ((b > 127) && (b < 2048))
+                {
+                    c += from((b >> 6) | 192);
+                    c += from((b & 63) | 128);
+                }
+                else
+                {
+                    c += from((b >> 12) | 224);
+                    c += from(((b >> 6) & 63) | 128);
+                    c += from((b & 63) | 128);
+                }
+            }
+            
+            return c;
+        }
+    });
+
+})();
