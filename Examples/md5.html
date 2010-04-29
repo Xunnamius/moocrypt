@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <title>String Cryptography: String.toMD5()</title>
+    </head>
+    <body>
+        <div id="from">Chris the Developer</div>
+        <div id="to"></div>
+        <div id="compare">e2a98a8e2769e3e6673100a682050918</div>
+        <script type="text/javascript" src="mootools.1.3.beta.1.js"></script>
+        <script type="text/javascript" src="../Source/string.utf8.js"></script>
+        <script type="text/javascript" src="../Source/string.md5.js"></script>
+        <script type="text/javascript">
+            window.addEvent('domready', function() {
+                var from = document.id('from'),
+                    to = document.id('to');
+                    
+                to.set('text', from.get('text').toMD5());
+            });
+        </script>
+    </body>
+</html>
