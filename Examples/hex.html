@@ -1,23 +1,23 @@
 <!doctype html>
 <html>
-    <head>
-        <title>String Cryptography: String.toHex() + String.fromHex()</title>
-    </head>
-    <body>
-        <div id="from">Chris the Developer</div>
-        <div id="toHex"></div>
-        <div id="fromHex"></div>
-        <script type="text/javascript" src="mootools.1.3.beta.1.js"></script>
-        <script type="text/javascript" src="../Source/string.hex.js"></script>
-        <script type="text/javascript">
-            window.addEvent('domready', function() {
-                var from = document.id('from'),
-                    toHex = document.id('toHex'),
-                    fromHex = document.id('fromHex');
-                    
-                toHex.set('text', from.get('text').toHex());
-                fromHex.set('text', toHex.get('text').fromHex());
-            });
-        </script>
-    </body>
+	<head>
+		<title>String Cryptography: String.toHex() + String.fromHex()</title>
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+	</head>
+	<body>
+		<h1>String.toHex() + String.fromHex()</h1>
+		<div id="from">Testing: Chris the Developer</div>
+		<div id="toHex"></div>
+		<div id="fromHex"></div>
+		<script type="text/javascript" src="mootools.1.3.beta.1.js"></script>
+		<script type="text/javascript" src="../Source/string.hex.js"></script>
+		<script type="text/javascript">
+			window.addEvent('domready', function() {
+				var result = 'Chris the Developer'.toHex();
+
+				document.id('toHex').set('text', 'toHex:' + result);
+				document.id('fromHex').set('text', 'fromHex:' + result.fromHex());
+			});
+		</script>
+	</body>
 </html>

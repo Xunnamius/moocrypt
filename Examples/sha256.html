@@ -1,22 +1,21 @@
 <!doctype html>
 <html>
-    <head>
-        <title>String Cryptography: String.toSHA256()</title>
-    </head>
-    <body>
-        <div id="from">Chris the Developer</div>
-        <div id="to"></div>
-        <div id="compare">53fc5c4e3267985242c62e44c39b390d804a3d8ea60da712a95cc5a83daeda7e</div>
-        <script type="text/javascript" src="mootools.1.3.beta.1.js"></script>
-        <script type="text/javascript" src="../Source/string.utf8.js"></script>
-        <script type="text/javascript" src="../Source/string.sha256.js"></script>
-        <script type="text/javascript">
-            window.addEvent('domready', function() {
-                var from = document.id('from'),
-                    to = document.id('to');
-                    
-                to.set('text', from.get('text').toSHA256());
-            });
-        </script>
-    </body>
+	<head>
+		<title>String Cryptography: String.toSHA256()</title>
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+	</head>
+	<body>
+		<h1>String.toSHA256()</h1>
+		<div id="from">Testing: Chris the Developer</div>
+		<div id="to"></div>
+		<div id="compare">Should be: 53fc5c4e3267985242c62e44c39b390d804a3d8ea60da712a95cc5a83daeda7e</div>
+		<script type="text/javascript" src="mootools.1.3.beta.1.js"></script>
+		<script type="text/javascript" src="../Source/string.utf8.js"></script>
+		<script type="text/javascript" src="../Source/string.sha256.js"></script>
+		<script type="text/javascript">
+			window.addEvent('domready', function() {
+				document.id('to').set('text', 'Output: ' + 'Chris the Developer'.toSHA256());
+			});
+		</script>
+	</body>
 </html>
