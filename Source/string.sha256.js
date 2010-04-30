@@ -83,6 +83,32 @@ provides: [String.toSHA256]
 				return (transforms.a(a, 17) ^ transforms.a(a, 19) ^ transforms.b(a, 10));
 			}
 		};
+
+	function stringToBin(string, size)
+	{
+		var bin = Array(),
+			mask = (1 << size) - 1;
+
+		for(var i = 0; i < string.length * size; i += size)
+		{
+			bin[i >> 5] |= (string.charCodeAt(i / size) & mask) << (24 - i % 32);
+		}
+
+		return bin;
+	}
+
+	function binToHex(bin, hexUpperCase)
+	{
+		var result = '',
+			chars = hexUpperCase ? "0123456789ABCDEF" : "0123456789abcdef";
+
+		for(var i = 0; i < bin.length * 4; i++)
+		{
+			result += chars.charAt((bin[i >> 2] >> ((3 - i % 4) * 8 + 4)) & 0xF) + chars.charAt((bin[i >> 2] >> ((3 - i % 4) * 8  )) & 0xF);
+		}
+
+		return result;
+	}
 	
 	function core(bin, size)
 	{
@@ -141,35 +167,9 @@ provides: [String.toSHA256]
 		}
 
 		return hash;
-	}	
-
-	function stringToBin(string, size)
-	{
-		var bin = Array(),
-			mask = (1 << size) - 1;
-
-		for(var i = 0; i < string.length * size; i += size)
-		{
-			bin[i >> 5] |= (string.charCodeAt(i / size) & mask) << (24 - i % 32);
-		}
-
-		return bin;
 	}
 
-	function binToHex(bin, hexUpperCase)
-	{
-		var result = '',
-			chars = hexUpperCase ? "0123456789ABCDEF" : "0123456789abcdef";
-
-		for(var i = 0; i < bin.length * 4; i++)
-		{
-			result += chars.charAt((bin[i >> 2] >> ((3 - i % 4) * 8 + 4)) & 0xF) + chars.charAt((bin[i >> 2] >> ((3 - i % 4) * 8  )) & 0xF);
-		}
-
-		return result;
-	}
-
-    function sha256(s, size, hexUpperCase)
+	function sha256(s, size, hexUpperCase)
 	{
 		var bin = stringToBin(s.toUTF8(), size),
 			proc = core(bin, s.length * size);
