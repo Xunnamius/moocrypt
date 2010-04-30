@@ -10,7 +10,8 @@ How to use
 
 	// Working demos are included in the download!
 	
-	'Chris the Developer'.toUTF8();				//'Chris the Developer'
+	'Chrís thë Dëvëlopër'.toUTF8();				//'ChrÃs thÃ« DÃ«vÃ«lopÃ«r'
+	'Chris the Developer'.toUTF8().fromUTF8();	//'Chris the Developer'
 	'Chris the Developer'.toHex();				//'43687269732074686520446576656c6f706572'
 	'Chris the Developer'.toHex().fromHex();	//'Chris the Developer'
 	'Chris the Developer'.toCRC32();			//'1911945355'

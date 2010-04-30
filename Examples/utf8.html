@@ -6,13 +6,17 @@
 	</head>
 	<body>
 		<h1>String.toUTF8()</h1>
-		<div id="from">Testing: Chrís the Developer</div>
-		<div id="to"></div>
+		<div id="from">Testing: Chrís thë Dëvëlopër</div>
+		<div id="toUTF8"></div>
+		<div id="fromUTF8"></div>
 		<script type="text/javascript" src="mootools.1.3.beta.1.js"></script>
 		<script type="text/javascript" src="../Source/string.utf8.js"></script>
 		<script type="text/javascript">
 			window.addEvent('domready', function() {
-				document.id('to').set('text', 'Output: ' + 'Chrís the Developer'.toUTF8());
+				var result = 'Chrís thë Dëvëlopër'.toUTF8();
+
+				document.id('toUTF8').set('text', 'toUTF8:' + result);
+				document.id('fromUTF8').set('text', 'fromUTF8:' + result.fromUTF8());
 			});
 		</script>
 	</body>
