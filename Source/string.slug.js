@@ -11,6 +11,9 @@ requires:
 
 (function() {
 
+	// A special thanks to the MooTools more team who
+	// compiled this extensive list of character replacements.
+
 	var special = {
 		'a': ['à', 'á', 'â', 'ã', 'ä', 'å', 'a', 'a'],
 		'A': ['À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'A', 'A'],
