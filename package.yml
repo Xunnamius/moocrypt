@@ -1,0 +1,5 @@
+name: String Cryptography
+author: sixtyseconds
+category: Native
+tags: [md5, sha1, sha256, crc32, utf8, string, cryptography, hex, encode, hash]
+current: 0.1
