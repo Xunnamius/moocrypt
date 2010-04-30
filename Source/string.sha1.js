@@ -1,18 +1,12 @@
 /*
 ---
 description: String SHA1 hashing.
-
 license: MIT-style
-
-authors:
-- Christopher Pitt
-
-requires:
-- core/1.2.4: String
-- string_toutf8/0.1: String.toUTF8
-
+authors: [Christopher Pitt]
 provides: [String.toSHA1]
-
+requires: 
+  core/1.2.4: [String]
+  _self_/_current_: [String.toUTF8]
 ...
 */
 
