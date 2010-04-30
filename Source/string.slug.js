@@ -69,11 +69,15 @@ requires:
 	function walk(string, replacements)
 	{
 		var result = string;
-
-		Hash.each(replacements, function(value, key) {
-			result = result.replace(new RegExp(value, 'g'), key);
-		});
-
+	
+		for (key in replacements)
+		{
+			if (replacements.hasOwnProperty(key))
+			{
+				result = result.replace(new RegExp(replacements[key], 'g'), key);
+			}
+		}
+	
 		return result;
 	}
 
