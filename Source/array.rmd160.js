@@ -130,36 +130,62 @@ requires:
 		array[length >> 5] |= 0x80 << (length % 32);
 		array[(((length + 64) >>> 9) << 4) + 14] = length;
 
-		var h0 = 0x67452301;
-		var h1 = 0xefcdab89;
-		var h2 = 0x98badcfe;
-		var h3 = 0x10325476;
-		var h4 = 0xc3d2e1f0;
+		var i, j, t,
 
-		for (var i = 0; i < array.length; i += 16) {
-			var T;
-			var A1 = h0, B1 = h1, C1 = h2, D1 = h3, E1 = h4;
-			var A2 = h0, B2 = h1, C2 = h2, D2 = h3, E2 = h4;
-			for (var j = 0; j <= 79; ++j) {
-				T = transforms.safeAdd(A1, transforms.a(j, B1, C1, D1));
-				T = transforms.safeAdd(T, array[i + tables.a[j]]);
-				T = transforms.safeAdd(T, transforms.b(j));
-				T = transforms.safeAdd(transforms.rotateLeft(T, tables.c[j]), E1);
-				A1 = E1; E1 = D1; D1 = transforms.rotateLeft(C1, 10); C1 = B1; B1 = T;
-				T = transforms.safeAdd(A2, transforms.a(79-j, B2, C2, D2));
-				T = transforms.safeAdd(T, array[i + tables.b[j]]);
-				T = transforms.safeAdd(T, transforms.c(j));
-				T = transforms.safeAdd(transforms.rotateLeft(T, tables.d[j]), E2);
-				A2 = E2; E2 = D2; D2 = transforms.rotateLeft(C2, 10); C2 = B2; B2 = T;
+			hash = [
+				0x67452301,
+				0xefcdab89,
+				0x98badcfe,
+				0x10325476,
+				0xc3d2e1f0
+			],
+
+			a1, a2, b1, b2,
+			c1, c2, d1, d2,
+			e1, e2;
+
+		for (i = 0; i < array.length; i += 16)
+		{
+			a1 = a2 = hash[0];
+			b1 = b2 = hash[1];
+			c1 = c2 = hash[2];
+			d1 = d2 = hash[3];
+			e1 = e2 = hash[4];
+
+			for (j = 0; j <= 79; ++j)
+			{
+				t = transforms.safeAdd(a1, transforms.a(j, b1, c1, d1));
+				t = transforms.safeAdd(t, array[i + tables.a[j]]);
+				t = transforms.safeAdd(t, transforms.b(j));
+				t = transforms.safeAdd(transforms.rotateLeft(t, tables.c[j]), e1);
+
+				a1 = e1;
+				e1 = d1;
+				d1 = transforms.rotateLeft(c1, 10);
+				c1 = b1;
+				b1 = t;
+
+				t = transforms.safeAdd(a2, transforms.a(79 - j, b2, c2, d2));
+				t = transforms.safeAdd(t, array[i + tables.b[j]]);
+				t = transforms.safeAdd(t, transforms.c(j));
+				t = transforms.safeAdd(transforms.rotateLeft(t, tables.d[j]), e2);
+
+				a2 = e2;
+				e2 = d2;
+				d2 = transforms.rotateLeft(c2, 10);
+				c2 = b2;
+				b2 = t;
 			}
-			T = transforms.safeAdd(h1, transforms.safeAdd(C1, D2));
-			h1 = transforms.safeAdd(h2, transforms.safeAdd(D1, E2));
-			h2 = transforms.safeAdd(h3, transforms.safeAdd(E1, A2));
-			h3 = transforms.safeAdd(h4, transforms.safeAdd(A1, B2));
-			h4 = transforms.safeAdd(h0, transforms.safeAdd(B1, C2));
-			h0 = T;
+
+			t = transforms.safeAdd(hash[1], transforms.safeAdd(c1, d2));
+			hash[1] = transforms.safeAdd(hash[2], transforms.safeAdd(d1, e2));
+			hash[2] = transforms.safeAdd(hash[3], transforms.safeAdd(e1, a2));
+			hash[3] = transforms.safeAdd(hash[4], transforms.safeAdd(a1, b2));
+			hash[4] = transforms.safeAdd(hash[0], transforms.safeAdd(b1, c2));
+			hash[0] = t;
 		}
-		return [h0, h1, h2, h3, h4];
+
+		return [hash[0], hash[1], hash[2], hash[3], hash[4]];
 	}
 
 	Array.implement({
