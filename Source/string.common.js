@@ -14,12 +14,12 @@ requires:
 	String.implement({
 		'toBin': function(size)
 		{
-			var bin = Array(),
+			var a, bin = Array(),
 				mask = (1 << size) - 1;
 
-			for(var i = 0; i < this.length * size; i += size)
+			for(a = 0; a < this.length * size; a += size)
 			{
-				bin[i >> 5] |= (this.charCodeAt(i / size) & mask) << (24 - i % 32);
+				bin[a >> 5] |= (this.charCodeAt(a / size) & mask) << (24 - a % 32);
 			}
 
 			return bin;
