@@ -30,11 +30,6 @@ requires:
 			0x90BEFFFA, 0xA4506CEB, 0xBEF9A3F7, 0xC67178F2
 		],
 
-		hash = [
-			0x6A09E667, 0xBB67AE85, 0x3C6EF372, 0xA54FF53A,
-			0x510E527F, 0x9B05688C,0x1F83D9AB, 0x5BE0CD19
-		],
-
 		transforms = {
 			'safeAdd': function(a, b)
 			{
@@ -80,6 +75,12 @@ requires:
 	function sha256(bin, size)
 	{
 		var t1, t2, i, j,
+		
+			hash = [
+				0x6A09E667, 0xBB67AE85, 0x3C6EF372, 0xA54FF53A,
+				0x510E527F, 0x9B05688C,0x1F83D9AB, 0x5BE0CD19
+			],
+			
 			w = new Array(64),
 			trans = transforms,
 			safe = trans.safeAdd,
