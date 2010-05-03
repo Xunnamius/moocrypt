@@ -11,6 +11,7 @@ requires:
 */
 
 (function() {
+
 	function stringToBin(string, size)
 	{
 		var bin = Array(),
@@ -44,12 +45,12 @@ requires:
 
 		return binToHex(proc, hexUpperCase);
 	}
-    
-    String.implement({
-       'toSHA256': function()
-       {
-           return sha256(this, 8, 0);
-       } 
-    });
+
+	String.implement({
+		'toSHA256': function()
+		{
+			return sha256(this, 8, 0);
+		} 
+	});
 
 })();
