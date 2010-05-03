@@ -22,6 +22,7 @@ How to use
 	'Chrís thë Dëvëlopër'.toSlug(); //'chris-the-developer'
 	'Chris the Developer'.toBase64(); //'Q2hyaXMgdGhlIERldmVsb3Blcg=='
 	'Chris the Developer'.toBase64().fromBase64(); //'Chris the Developer'
+	'Chris the Developer'.toRMD160(); //'6072cb3e869f79a1d43701603c608867019584f7'
 
 Demos
 -----
@@ -35,3 +36,4 @@ Demos
 * SHA512: [Demo](http://www.jsfiddle.net/sixtyseconds/PCESH/)
 * Slug: [Demo](http://www.jsfiddle.net/sixtyseconds/rpbLV/)
 * Base64: [Demo](http://www.jsfiddle.net/sixtyseconds/2Pm7k/)
+* RMD160: [Demo](http://www.jsfiddle.net/sixtyseconds/7Ff9U/)

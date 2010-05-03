@@ -12,13 +12,13 @@ requires:
 
 (function() {
 	
-	function binToString(string)
+	function binToString(array)
 	{
 		var a, result = '';
 
 		for(a = 0; a < string.length * 32; a += 8)
 		{
-			result += String.fromCharCode((string[a >> 5] >>> (a % 32)) & 0xFF);
+			result += String.fromCharCode((array[a >> 5] >>> (a % 32)) & 0xFF);
 		}
 
 		return result;
