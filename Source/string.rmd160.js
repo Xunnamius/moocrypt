@@ -16,7 +16,7 @@ requires:
 	{
 		var a, result = '';
 
-		for(a = 0; a < string.length * 32; a += 8)
+		for(a = 0; a < array.length * 32; a += 8)
 		{
 			result += String.fromCharCode((array[a >> 5] >>> (a % 32)) & 0xFF);
 		}
