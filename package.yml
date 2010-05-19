@@ -1,6 +1,6 @@
 name: String Cryptography
 author: sixtyseconds
 category: Native
-tags: [md5, sha1, sha256, sha512, crc32, utf8, string, cryptography, hex, encode, hash, slug, base64, rmd160]
+tags: [string, encode, decode]
 current: 0.1
 demo: http://www.jsfiddle.net/sixtyseconds/xhxXr/
