@@ -1,6 +1,5 @@
-name: String Cryptography
+name: sixtyseconds string cryptography
 author: sixtyseconds
 category: Native
 tags: [string, encode, decode]
-current: 0.1
-demo: http://www.jsfiddle.net/sixtyseconds/xhxXr/
+current: 0.2

@@ -1,20 +1,20 @@
 <!doctype html>
 <html>
 	<head>
-		<title>String Cryptography: String.toSHA256()</title>
+		<title>sixtyseconds string cryptography: sha256</title>
 		<link rel="stylesheet" type="text/css" href="styles.css" />
 	</head>
 	<body>
-		<h1>String.toSHA256()</h1>
+		<h1>sixtyseconds string cryptography: sha256</h1>
 		<div id="from">Testing: Chris the Developer</div>
 		<div id="to"></div>
 		<div id="compare">Should be: 53fc5c4e3267985242c62e44c39b390d804a3d8ea60da712a95cc5a83daeda7e</div>
-		<script type="text/javascript" src="mootools.1.3.beta.1.js"></script>
-		<script type="text/javascript" src="../Source/string.common.js"></script>
-		<script type="text/javascript" src="../Source/array.common.js"></script>
-		<script type="text/javascript" src="../Source/string.utf8.js"></script>
-		<script type="text/javascript" src="../Source/array.sha256.js"></script>
-		<script type="text/javascript" src="../Source/string.sha256.js"></script>
+		<script type="text/javascript" src="mootools.core.1.2.4.js"></script>
+		<script type="text/javascript" src="../Source/sixtyseconds.string.common.js"></script>
+		<script type="text/javascript" src="../Source/sixtyseconds.array.common.js"></script>
+		<script type="text/javascript" src="../Source/sixtyseconds.string.utf8.js"></script>
+		<script type="text/javascript" src="../Source/sixtyseconds.array.sha256.js"></script>
+		<script type="text/javascript" src="../Source/sixtyseconds.string.sha256.js"></script>
 		<script type="text/javascript">
 			window.addEvent('domready', function() {
 				document.id('to').set('text', 'Output: ' + 'Chris the Developer'.toSHA256());
