@@ -8,7 +8,7 @@ requires:
   - Core/String
   - String.toUTF8
   - String.toBin
-  - Array.toSHA256
+  - Array.toSHA512
   - Array.toHex
 provides: [String.toSHA512]
 ...
