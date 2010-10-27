@@ -6,10 +6,10 @@ license: MIT-style
 authors: [Christopher Pitt]
 requires:
   - Core/String
-  - String.UTF-8
-  - String.Common
-  - Array.SHA-512
-  - Array.Common
+  - String.toUTF8
+  - String.toBin
+  - Array.toSHA256
+  - Array.toHex
 provides: [String.toSHA512]
 ...
 */

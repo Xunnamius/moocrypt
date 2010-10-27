@@ -6,11 +6,11 @@ license: MIT-style
 authors: [Christopher Pitt]
 requires: 
   - Core/String
-  - String.UTF-8
-  - String.Hex
-  - String.Common
-  - Array.RMD160
-  - Array.Common
+  - String.toUTF8
+  - String.toHex
+  - String.toBin
+  - Array.toRMD160
+  - Array.toHex
 provides: [String.toRMD160]
 ...
 */

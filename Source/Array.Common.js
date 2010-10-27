@@ -5,7 +5,7 @@ description: Common Array hash-related methods.
 license: MIT-style
 authors: [Christopher Pitt]
 requires: 
-  core/1.2.4: [Array]
+  - Core/Array
 provides: [Array.toHex]
 ...
 */

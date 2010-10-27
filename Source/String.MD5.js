@@ -6,7 +6,7 @@ license: MIT-style
 authors: [Christopher Pitt]
 requires: 
   - Core/String
-  - String.UTF-8
+  - String.toUTF8
 provides: [String.toMD5]
 ...
 */
