@@ -1,5 +1,41 @@
-name: sixtyseconds string cryptography
+name: "string-cryptography"
+
+web: "[mootools.net/forge/p/string_cryptography](http://mootools.net/forge/p/string_cryptography)"
+
+description: "String cryptography methods."
+
+authors: "[Christopher Pitt](http://mootools.net/forge/profile/sixtyseconds)"
+
+license: "MIT License"
+
+copyright: "&copy; 2010, Christopher Pitt"
+
+sources:
+  - "Source/Array.Common.js"
+  - "Source/Array.RMD160.js"
+  - "Source/Array.SHA-256.js"
+  - "Source/Array.SHA-512.js"
+  - "Source/String.Base64.js"
+  - "Source/String.Common.js"
+  - "Source/String.CRC-32.js"
+  - "Source/String.Hex.js"
+  - "Source/String.MD5.js"
+  - "Source/String.RMD160.js"
+  - "Source/String.SHA-1.js"
+  - "Source/String.SHA-256.js"
+  - "Source/String.SHA-512.js"
+  - "Source/String.UTF-8.js"
+
+# Values for MooTools forge
+
 author: sixtyseconds
+
+current: 0.2.0
+
+docs: http://github.com/sixtyseconds/mootools-string-cryptography/blob/master/README.md
+
+demo: http://www.jsfiddle.net/sixtyseconds/HLHdR/
+
 category: Native
+
 tags: [string, encode, decode]
-current: 0.2
