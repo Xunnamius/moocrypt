@@ -1,12 +1,13 @@
 /*
 ---
+name: String.MD5
 description: String MD5 hashing.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [String.toMD5]
 requires: 
-  core/1.2.4: [String]
-  _self_/_current_: [String.toUTF8]
+  - Core/String
+  - String.UTF-8
+provides: [String.toMD5]
 ...
 */
 

@@ -1,12 +1,13 @@
 /*
 ---
+name: String.SHA-1
 description: String SHA1 hashing.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [String.toSHA1]
 requires: 
-  core/1.2.4: [String]
-  _self_/_current_: [String.toUTF8]
+  - Core/String
+  - String.UTF-8
+provides: [String.toSHA1]
 ...
 */
 

@@ -1,12 +1,13 @@
 /*
 ---
+name: String.CRC-32
 description: String CRC32 hashing.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [String.toCRC32]
 requires: 
-  core/1.2.4: [String]
-  _self_/_current_: [String.toUTF8]
+  - Core/String
+  - String.UTF-8
+provides: [String.toCRC32]
 ...
 */
 

@@ -1,11 +1,12 @@
 /*
 ---
+name: String.UTF-8
 description: String UTF8 encoding.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [String.toUTF8]
 requires: 
-  core/1.2.4: [String]
+  - Core/String
+provides: [String.toUTF8, String.fromUTF8]
 ...
 */
 

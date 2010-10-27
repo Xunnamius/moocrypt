@@ -1,11 +1,12 @@
 /*
 ---
+name: Array.Common
 description: Common Array hash-related methods.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [Array.toHex]
 requires: 
   core/1.2.4: [Array]
+provides: [Array.toHex]
 ...
 */
 

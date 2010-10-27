@@ -1,12 +1,12 @@
 /*
 ---
+name: String.Hex
 description: String Hex encode/decode.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [String.toSHA256]
 requires: 
-  core/1.2.4: [String]
-  _self_/_current_: [String.toUTF8]
+  - Core/String
+provides: [String.toHex, String.fromHex]
 ...
 */
 

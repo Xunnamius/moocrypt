@@ -1,11 +1,12 @@
 /*
 ---
+name: String.Common
 description: Common String hash-related methods.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [String.toBin]
 requires: 
-  core/1.2.4: [String]
+  - Core/String
+provides: [String.toBin]
 ...
 */
 

@@ -1,11 +1,12 @@
 /*
 ---
+name: Array.SHA-512
 description: Array SHA512 processing, for big-endian dword arrays.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [Array.toSHA512]
 requires: 
-  core/1.2.4: [Array]
+  - Core/Array
+provides: [Array.toSHA512]
 ...
 */
 

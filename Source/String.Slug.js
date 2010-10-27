@@ -1,11 +1,12 @@
-﻿/*
+/*
 ---
+name: String.Slug
 description: String slug conversion.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [String.toSlug]
 requires: 
-  core/1.2.4: [String]
+  - Core/String
+provides: [String.toSlug]
 ...
 */
 

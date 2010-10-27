@@ -1,11 +1,12 @@
 /*
 ---
+name: Array.RMD160
 description: Array RMD160 processing, for little-endian dword arrays.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [Array.toRMD160]
 requires: 
-  core/1.2.4: [Array]
+  - Core/Array
+provides: [Array.toRMD160]
 ...
 */
 

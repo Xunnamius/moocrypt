@@ -1,12 +1,16 @@
 /*
 ---
+name: String.SHA-256
 description: String SHA256 hashing.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [String.toSHA256]
 requires: 
-  core/1.2.4: [String]
-  _self_/_current_: [String.toUTF8, String.toBin, Array.toSHA256, Array.toHex]
+  - Core/String
+  - String.UTF-8
+  - String.Common
+  - Array.SHA-256
+  - Array.Common
+provides: [String.toSHA256]
 ...
 */
 

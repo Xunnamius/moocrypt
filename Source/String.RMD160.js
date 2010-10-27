@@ -1,12 +1,17 @@
 /*
 ---
+name: String.RMD160
 description: String RMD160 hashing.
 license: MIT-style
 authors: [Christopher Pitt]
-provides: [String.toRMD160]
 requires: 
-  core/1.2.4: [String]
-  _self_/_current_: [String.toUTF8, String.toHex, String.toBin, Array.toRMD160, Array.toHex]
+  - Core/String
+  - String.UTF-8
+  - String.Hex
+  - String.Common
+  - Array.RMD160
+  - Array.Common
+provides: [String.toRMD160]
 ...
 */
 
