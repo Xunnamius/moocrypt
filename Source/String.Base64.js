@@ -3,7 +3,7 @@
 name: String.Base64
 description: String Hex encode/decode.
 license: MIT-style
-authors: [Christopher Pitt]
+authors: [Christopher Pitt, Enrique Erne]
 requires: 
   - Core/String
   - String.toUTF8

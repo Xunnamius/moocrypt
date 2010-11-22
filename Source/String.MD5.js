@@ -3,7 +3,7 @@
 name: String.MD5
 description: String MD5 hashing.
 license: MIT-style
-authors: [Christopher Pitt]
+authors: [Christopher Pitt, Enrique Erne]
 requires: 
   - Core/String
   - String.toUTF8

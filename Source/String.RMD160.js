@@ -3,7 +3,7 @@
 name: String.RMD160
 description: String RMD160 hashing.
 license: MIT-style
-authors: [Christopher Pitt]
+authors: [Christopher Pitt, Enrique Erne]
 requires: 
   - Core/String
   - String.toUTF8

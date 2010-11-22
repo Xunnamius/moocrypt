@@ -3,7 +3,7 @@
 name: Array.Hex
 description: Array Hex encode
 license: MIT-style
-authors: [Christopher Pitt]
+authors: [Christopher Pitt, Enrique Erne]
 requires: 
   - Core/Array
 provides: [Array.toHex]

@@ -3,7 +3,7 @@
 name: Array.SHA-256
 description: Array SHA256 processing, for big-endian dword arrays.
 license: MIT-style
-authors: [Christopher Pitt]
+authors: [Christopher Pitt, Enrique Erne]
 requires: 
   - Core/Array
 provides: [Array.toSHA256]
