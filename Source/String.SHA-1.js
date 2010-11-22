@@ -11,19 +11,16 @@ provides: [String.toSHA1]
 ...
 */
 
-(function() {
+(function(){
 
 	var transforms = {
-		'rotateLeft': function(a, b)
-		{
+		'rotateLeft': function(a, b){
 			return (a << b) | (a >>> (32 - b));
 		},
-		'hex': function(a)
-		{
+		'hex': function(a){
 			var b, c, result = '';
 
-			for(b = 7; b >= 0; b--)
-			{
+			for (b = 7; b >= 0; b--){
 				c = (a >>> (b * 4)) & 0x0f;
 				result += c.toString(16);
 			}
@@ -32,8 +29,7 @@ provides: [String.toSHA1]
 		}
 	};
 
-	function sha1(string)
-	{
+	function sha1(string){
 		var a, b, c,
 			h1 = 0x67452301,
 			h2 = 0xEFCDAB89,
@@ -47,26 +43,24 @@ provides: [String.toSHA1]
 			words = new Array(),
 			buffer = new Array(80),
 
-			code = function(a) {
+			code = function(a){
 				return string.charCodeAt(a);
 			},
 
-			assign = function(c) {
+			assign = function(c){
 				t5 = t4;
 				t4 = t3;
 				t3 = transforms.rotateLeft(t2, 30);
 				t2 = t1;
-				t1 = c
+				t1 = c;
 			};
 
-		for(a = 0; a < length - 3; a += 4)
-		{
+		for (a = 0; a < length - 3; a += 4){
 			b = code(a) << 24 | code(a + 1) << 16 | code(a + 2) << 8 | code(a + 3);
 			words.push(b);
 		}
 
-		switch (length % 4)
-		{
+		switch (length % 4){
 			case 0:
 				a = 0x080000000;
 				break;
@@ -83,23 +77,19 @@ provides: [String.toSHA1]
 
 		words.push(a);
 
-		while ((words.length % 16) != 14)
-		{
+		while ((words.length % 16) != 14){
 			words.push(0);
 		}
 
 		words.push(length >>> 29);
 		words.push((length << 3) & 0x0ffffffff);
 
-		for (c = 0; c < words.length; c += 16)
-		{
-			for(a = 0; a < 16; a++)
-			{
+		for (c = 0; c < words.length; c += 16){
+			for (a = 0; a < 16; a++){
 				buffer[a] = words[c + a];
 			}
 
-			for(a = 16; a <= 79; a++)
-			{
+			for (a = 16; a <= 79; a++){
 				buffer[a] = transforms.rotateLeft(buffer[a - 3] ^ buffer[a - 8] ^ buffer[a - 14] ^ buffer[a - 16], 1);
 			}
 
@@ -109,23 +99,19 @@ provides: [String.toSHA1]
 			t4 = h4;
 			t5 = h5;
 
-			for(a = 0; a <= 19; a++)
-			{
+			for (a = 0; a <= 19; a++){
 				assign((transforms.rotateLeft(t1, 5) + ((t2 & t3) | (~t2 & t4)) + t5 + buffer[a] + 0x5A827999) & 0x0ffffffff);
 			}
 
-			for(a = 20; a <= 39; a++)
-			{
+			for (a = 20; a <= 39; a++){
 				assign((transforms.rotateLeft(t1, 5) + (t2 ^ t3 ^ t4) + t5 + buffer[a] + 0x6ED9EBA1) & 0x0ffffffff);
 			}
 
-			for(a = 40; a <= 59; a++)
-			{
+			for (a = 40; a <= 59; a++){
 				assign((transforms.rotateLeft(t1, 5) + ((t2 & t3) | (t2 & t4) | (t3 & t4)) + t5 + buffer[a] + 0x8F1BBCDC) & 0x0ffffffff);
 			}
 
-			for(a = 60; a <= 79; a++)
-			{
+			for (a = 60; a <= 79; a++){
 				assign((transforms.rotateLeft(t1, 5) + (t2 ^ t3 ^ t4) + t5 + buffer[a] + 0xCA62C1D6) & 0x0ffffffff);
 			}
 
@@ -140,8 +126,7 @@ provides: [String.toSHA1]
 	}
 
 	String.implement({
-		'toSHA1': function()
-		{
+		'toSHA1': function(){
 			return sha1(this);
 		}
 	});

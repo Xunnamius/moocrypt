@@ -10,7 +10,7 @@ provides: [String.toSlug]
 ...
 */
 
-(function() {
+(function(){
 
 	// A special thanks to the MooTools more team who
 	// compiled this extensive list of character replacements.
@@ -67,14 +67,11 @@ provides: [String.toSlug]
 		'&raquo;': '[\uFFFD]'
 	};
 
-	function walk(string, replacements)
-	{
+	function walk(string, replacements){
 		var result = string;
 	
-		for (key in replacements)
-		{
-			if (replacements.hasOwnProperty(key))
-			{
+		for (key in replacements){
+			if (replacements.hasOwnProperty(key)){
 				result = result.replace(new RegExp(replacements[key], 'g'), key);
 			}
 		}
@@ -82,8 +79,7 @@ provides: [String.toSlug]
 		return result;
 	}
 
-	function slug(string)
-	{
+	function slug(string){
 		return walk(string, special)
 			.replace(/\s+/g, '-')
 			.toLowerCase()
@@ -91,8 +87,7 @@ provides: [String.toSlug]
 	}
 
 	String.implement({
-		'toSlug': function()
-		{
+		'toSlug': function(){
 			return slug(this);
 		} 
 	});

@@ -10,7 +10,7 @@ provides: [Array.toRMD160]
 ...
 */
 
-(function() {
+(function(){
 
 	var tables = {
 			'a': [
@@ -44,90 +44,40 @@ provides: [Array.toRMD160]
 		},
 		
 		transforms = {
-			'a': function(a, b, c, d)
-			{
-				if (0 <= a && a <= 15)
-				{
-					return (b ^ c ^ d);
-				}
-				else if (16 <= a && a <= 31)
-				{
-					return (b & c) | (~b & d);
-				}
-				else if (32 <= a && a <= 47)
-				{
-					return (b | ~c) ^ d;
-				}
-				else if (48 <= a && a <= 63)
-				{
-					return (b & d) | (c & ~d);
-				}
-				else if (64 <= a && a <= 79)
-				{
-					return b ^ (c | ~d);
-				}
+			'a': function(a, b, c, d){
+				if (0 <= a && a <= 15) return (b ^ c ^ d);
+				else if (16 <= a && a <= 31) return (b & c) | (~b & d);
+				else if (32 <= a && a <= 47) return (b | ~c) ^ d;
+				else if (48 <= a && a <= 63) return (b & d) | (c & ~d);
+				else if (64 <= a && a <= 79) return b ^ (c | ~d);
+				
 			},
-			'b': function(a)
-			{
-				if (0 <= a && a <= 15)
-				{
-					return 0x00000000;
-				}
-				else if (16 <= a && a <= 31)
-				{
-					return 0x5a827999;
-				}
-				else if (32 <= a && a <= 47)
-				{
-					return 0x6ed9eba1;
-				}
-				else if (48 <= a && a <= 63)
-				{
-					return 0x8f1bbcdc;
-				}
-				else if (64 <= a && a <= 79)
-				{
-					return 0xa953fd4e;
-				}
+			'b': function(a){
+				if (0 <= a && a <= 15) return 0x00000000;
+				else if (16 <= a && a <= 31) return 0x5a827999;
+				else if (32 <= a && a <= 47) return 0x6ed9eba1;
+				else if (48 <= a && a <= 63) return 0x8f1bbcdc;
+				else if (64 <= a && a <= 79) return 0xa953fd4e;
 			},
-			'c': function(a)
-			{
-				if (0 <= a && a <= 15)
-				{
-					return 0x50a28be6;
-				}
-				else if (16 <= a && a <= 31)
-				{
-					return 0x5c4dd124;
-				}
-				else if (32 <= a && a <= 47)
-				{
-					return 0x6d703ef3;
-				}
-				else if (48 <= a && a <= 63)
-				{
-					return 0x7a6d76e9;
-				}
-				else if (64 <= a && a <= 79)
-				{
-					return 0x00000000;
-				}
+			'c': function(a){
+				if (0 <= a && a <= 15) return 0x50a28be6;
+				else if (16 <= a && a <= 31) return 0x5c4dd124;
+				else if (32 <= a && a <= 47) return 0x6d703ef3;
+				else if (48 <= a && a <= 63) return 0x7a6d76e9;
+				else if (64 <= a && a <= 79) return 0x00000000;
 			},
-			'safeAdd': function(a, b)
-			{
+			'safeAdd': function(a, b){
 				var t1 = (a & 0xFFFF) + (b & 0xFFFF),
 					t2 = (a >> 16) + (b >> 16) + (t1 >> 16);
 
 				return (t2 << 16) | (t1 & 0xFFFF);
 			},
-			'rotateLeft': function(a, b)
-			{
+			'rotateLeft': function(a, b){
 				return (a << b) | (a >>> (32 - b));
 			}
 		};
 
-	function rmd160(array, length)
-	{
+	function rmd160(array, length){
 		array[length >> 5] |= 0x80 << (length % 32);
 		array[(((length + 64) >>> 9) << 4) + 14] = length;
 
@@ -145,16 +95,14 @@ provides: [Array.toRMD160]
 			c1, c2, d1, d2,
 			e1, e2;
 
-		for (i = 0; i < array.length; i += 16)
-		{
+		for (i = 0; i < array.length; i += 16){
 			a1 = a2 = hash[0];
 			b1 = b2 = hash[1];
 			c1 = c2 = hash[2];
 			d1 = d2 = hash[3];
 			e1 = e2 = hash[4];
 
-			for (j = 0; j <= 79; ++j)
-			{
+			for (j = 0; j <= 79; ++j){
 				t = transforms.safeAdd(a1, transforms.a(j, b1, c1, d1));
 				t = transforms.safeAdd(t, array[i + tables.a[j]]);
 				t = transforms.safeAdd(t, transforms.b(j));
@@ -190,8 +138,7 @@ provides: [Array.toRMD160]
 	}
 
 	Array.implement({
-		'toRMD160': function(length)
-		{
+		'toRMD160': function(length){
 			return rmd160(this, length);
 		}
 	});

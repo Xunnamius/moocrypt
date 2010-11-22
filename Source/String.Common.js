@@ -10,16 +10,14 @@ provides: [String.toBin]
 ...
 */
 
-(function() {
+(function(){
 
 	String.implement({
-		'toBin': function(size, littleEndian)
-		{
+		'toBin': function(size, littleEndian){
 			var a, bin = Array(),
 				mask = (1 << size) - 1;
 
-			for(a = 0; a < this.length * size; a += size)
-			{
+			for (a = 0; a < this.length * size; a += size){
 				var modifier = littleEndian ?
 					(a % 32):
 					(24 - a % 32);

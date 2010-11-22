@@ -10,27 +10,24 @@ provides: [String.toHex, String.fromHex]
 ...
 */
 
-(function() {
+(function(){
 
 	String.implement({
-		'toHex': function()
-		{
+		'toHex': function(){
 			var r = '', i = 0,
 			limit = this.length;
 
-			while(i < limit){
+			while (i < limit){
 				r += this.charCodeAt(i++).toString(16);
 			}
 
 			return r;
 		},
-		'fromHex': function()
-		{
+		'fromHex': function(){
 			var r = s = '',
 			e = this.length;
 
-			while(e > 0)
-			{
+			while(e > 0){
 				s = e - 2;
 				r = String.fromCharCode('0x' + this.substring(s, e)) + r;
 				e = s;

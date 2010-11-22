@@ -10,48 +10,41 @@ provides: [Array.toSHA512]
 ...
 */
 
-(function() {
+(function(){
 
-	function Int64(h, l)
-	{
+	function Int64(h, l){
 		this.h = h;
 		this.l = l;
 	}
 	
-	Int64.prototype.copy = function()
-	{
+	Int64.prototype.copy = function(){
 		return new Int64(this.h, this.l);
 	}
 
-	Int64.prototype.add = function()
-	{
+	Int64.prototype.add = function(){
 		var a, b,
 			t1 = this.l & 0xffff,
 			t2 = this.l >>> 16,
 			t3 = this.h & 0xffff,
 			t4 = this.h >>> 16;
 
-		for (a = 0; b = arguments[a]; a++)
-		{
+		for (a = 0; b = arguments[a]; a++){
 			t1 += (b.l & 0xffff);
 		}
 
-		for (a = 0; b = arguments[a]; a++)
-		{
+		for (a = 0; b = arguments[a]; a++){
 			t2 += (b.l >>> 16);
 		}
 		
 		t2 += (t1 >>> 16);
 
-		for (a = 0; b = arguments[a]; a++)
-		{
+		for (a = 0; b = arguments[a]; a++){
 			t3 += (b.h & 0xffff);
 		}
 
 		t3 += (t2 >>> 16);
 
-		for (a = 0; b = arguments[a]; a++)
-		{
+		for (a = 0; b = arguments[a]; a++){
 			t4 += (b.h >>> 16);
 		}
 
@@ -60,20 +53,17 @@ provides: [Array.toSHA512]
 		return new Int64((t3 & 0xffff) | (t4 << 16), (t1 & 0xffff) | (t2 << 16));
 	}
 
-	Int64.prototype.rotate = function(by, shift)
-	{
+	Int64.prototype.rotate = function(by, shift){
 		this.l = (by.l >>> shift) | (by.h << (32 - shift));
 		this.h = (by.h >>> shift) | (by.l << (32 - shift));
 	}
 
-	Int64.prototype.reverseRotate = function(by, shift)
-	{
+	Int64.prototype.reverseRotate = function(by, shift){
 		this.l = (by.h >>> shift) | (by.l << (32 - shift));
 		this.h = (by.l >>> shift) | (by.h << (32 - shift));
 	}
 
-	Int64.prototype.shift = function(by, shift)
-	{
+	Int64.prototype.shift = function(by, shift){
 		this.l = (by.l >>> shift) | (by.h << (32 - shift));
 		this.h = (by.h >>> shift);
 	}
@@ -121,8 +111,7 @@ provides: [Array.toSHA512]
 		new Int64(0x5fcb6fab, 0x3ad6faec), new Int64(0x6c44198c, 0x4a475817)
 	];
 
-	function sha512(bin, length)
-	{
+	function sha512(bin, length){
 		var i, j,
 			words = new Array(),
 			hash = new Array();
@@ -150,16 +139,14 @@ provides: [Array.toSHA512]
 			r1 = new Int64(0, 0), r2 = new Int64(0, 0),
 			r3 = new Int64(0, 0);
 
-		for (i = 0; i < 80; i++)
-		{
+		for (i = 0; i < 80; i++){
 			words[i] = new Int64(0, 0);
 		}
 
 		bin[length >> 5] |= 0x80 << (24 - (length & 0x1f));
 		bin[((length + 128 >> 10)<< 5) + 31] = length;
 
-		for (i = 0; i < bin.length; i += 32)
-		{
+		for (i = 0; i < bin.length; i += 32){
 			a = base[0].copy();
 			b = base[1].copy();
 			c = base[2].copy();
@@ -169,14 +156,12 @@ provides: [Array.toSHA512]
 			g = base[6].copy();
 			h = base[7].copy();
 
-			for(j = 0; j < 16; j++)
-			{
+			for (j = 0; j < 16; j++){
 				words[j].h = bin[i + 2 * j];
 				words[j].l = bin[i + 2 * j + 1];
 			}
 
-			for(j = 16; j < 80; j++)
-			{
+			for (j = 16; j < 80; j++){
 				r1.rotate(words[j - 2], 19);
 				r2.reverseRotate(words[j - 2], 29);
 				r3.shift(words[j - 2], 6);
@@ -192,8 +177,7 @@ provides: [Array.toSHA512]
 				words[j] = s1.add(words[j - 7], s0, words[j - 16]);
 			}
 
-			for(j = 0; j < 80; j++)
-			{
+			for (j = 0; j < 80; j++){
 				ch.l = (e.l & f.l) ^ (~e.l & g.l);
 				ch.h = (e.h & f.h) ^ (~e.h & g.h);
 
@@ -235,8 +219,7 @@ provides: [Array.toSHA512]
 			base[7] = base[7].add(h);
 		}
 
-		for(i = 0; i < 8; i++)
-		{
+		for (i = 0; i < 8; i++){
 			hash[2 * i] = base[i].h;
 			hash[2 * i + 1] = base[i].l;
 		}
@@ -245,8 +228,7 @@ provides: [Array.toSHA512]
 	}
 
 	Array.implement({
-		'toSHA512': function(length)
-		{
+		'toSHA512': function(length){
 			return sha512(this, length);
 		}
 	});

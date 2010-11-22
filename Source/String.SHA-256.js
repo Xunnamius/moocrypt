@@ -14,10 +14,9 @@ provides: [String.toSHA256]
 ...
 */
 
-(function() {
+(function(){
 
-	function sha256(string, size, hexUpperCase)
-	{
+	function sha256(string, size, hexUpperCase){
 		var bin = string.toUTF8().toBin(size),
 			proc = bin.toSHA256(string.length * size);
 
@@ -25,8 +24,7 @@ provides: [String.toSHA256]
 	}
 
 	String.implement({
-		'toSHA256': function()
-		{
+		'toSHA256': function(){
 			return sha256(this, 8, 0);
 		} 
 	});

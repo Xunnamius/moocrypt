@@ -32,49 +32,39 @@ provides: [Array.toSHA256]
 		],
 
 		transforms = {
-			'safeAdd': function(a, b)
-			{
+			'safeAdd': function(a, b){
 				var t1 = (a & 0xFFFF) + (b & 0xFFFF),
 					t2 = (a >> 16) + (b >> 16) + (t1 >> 16);
 
 				return (t2 << 16) | (t1 & 0xFFFF);
 			},
-			'a': function(a, b)
-			{
+			'a': function(a, b){
 				return (a >>> b) | (a << (32 - b));
 			},
-			'b': function(a, b)
-			{
+			'b': function(a, b){
 				return (a >>> b);
 			},
-			'c': function(a, b, c)
-			{
+			'c': function(a, b, c){
 				return ((a & b) ^ ((~a) & c));
 			},
-			'd': function(a, b, c)
-			{
+			'd': function(a, b, c){
 				return ((a & b) ^ (a & c) ^ (b & c));
 			},
-			's0': function(a)
-			{
+			's0': function(a){
 				return (transforms.a(a, 2) ^ transforms.a(a, 13) ^ transforms.a(a, 22));
 			},
-			's1': function(a)
-			{
+			's1': function(a){
 				return (transforms.a(a, 6) ^ transforms.a(a, 11) ^ transforms.a(a, 25));
 			},
-			'g0': function(a)
-			{
+			'g0': function(a){
 				return (transforms.a(a, 7) ^ transforms.a(a, 18) ^ transforms.b(a, 3));
 			},
-			'g1': function(a)
-			{
+			'g1': function(a){
 				return (transforms.a(a, 17) ^ transforms.a(a, 19) ^ transforms.b(a, 10));
 			}
 		};
 	
-	function sha256(bin, size)
-	{
+	function sha256(bin, size){
 		var t1, t2, i, j,
 		
 			hash = [
@@ -90,8 +80,7 @@ provides: [Array.toSHA256]
 		bin[size >> 5] |= 0x80 << (24 - size % 32);
 		bin[((size + 64 >> 9) << 4) + 15] = size;
 
-		for (i = 0; i < bin.length; i += 16)
-		{
+		for (i = 0; i < bin.length; i += 16){
 			a = hash[0];
 			b = hash[1];
 			c = hash[2];
@@ -101,14 +90,10 @@ provides: [Array.toSHA256]
 			g = hash[6];
 			h = hash[7];
 
-			for (j = 0; j < 64; j++)
-			{
-				if (j < 16)
-				{
+			for (j = 0; j < 64; j++){
+				if (j < 16){
 					w[j] = bin[j + i];
-				}
-				else
-				{
+				} else {
 					w[j] = safe(safe(safe(trans.g1(w[j - 2]), w[j - 7]), trans.g0(w[j - 15])), w[j - 16]);
 				}
 
@@ -139,8 +124,7 @@ provides: [Array.toSHA256]
 	}
 
 	Array.implement({
-		'toSHA256': function(length)
-		{
+		'toSHA256': function(length){
 			return sha256(this, length);
 		}
 	});

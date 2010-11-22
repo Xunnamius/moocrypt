@@ -14,10 +14,9 @@ provides: [String.toSHA512]
 ...
 */
 
-(function() {
+(function(){
 
-	function sha512(string, size, hexUpperCase)
-	{
+	function sha512(string, size, hexUpperCase){
 		var bin = string.toUTF8().toBin(size),
 			proc = bin.toSHA512(string.length * size);
 
@@ -25,8 +24,7 @@ provides: [String.toSHA512]
 	}
 
 	String.implement({
-		'toSHA512': function()
-		{
+		'toSHA512': function(){
 			return sha512(this, 8, 0);
 		}
 	});

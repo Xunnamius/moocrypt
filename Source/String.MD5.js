@@ -11,60 +11,46 @@ provides: [String.toMD5]
 ...
 */
 
-(function() {
+(function(){
 
 	var transforms = {
-		'f': function(a, b, c)
-		{
+		'f': function(a, b, c){
 			return (a & b) | ((~a) & c);
 		},
-		'g': function(a, b, c)
-		{
+		'g': function(a, b, c){
 			return (a & c) | (b & (~c));
 		},
-		'h': function(a, b, c)
-		{
+		'h': function(a, b, c){
 			return (a ^ b ^ c);
 		},
-		'i': function(a, b, c)
-		{
+		'i': function(a, b, c){
 			return (b ^ (a | (~c)));
 		},
-		'rotateLeft': function(a, b)
-		{
+		'rotateLeft': function(a, b){
 			return (a << b) | (a >>> (32 - b));
 		},
-		'addUnsigned': function(a, b)
-		{
+		'addUnsigned': function(a, b){
 			var a8 = (a & 0x80000000),
 				b8 = (b & 0x80000000),
 				a4 = (a & 0x40000000),
 				b4 = (b & 0x40000000),
 				result = (a & 0x3FFFFFFF) + (b & 0x3FFFFFFF);
 
-			if (a4 & b4)
-			{
+			if (a4 & b4){
 				return (result ^ 0x80000000 ^ a8 ^ b8);
 			}
 
-			if (a4 | b4)
-			{
-				if (result & 0x40000000)
-				{
+			if (a4 | b4){
+				if (result & 0x40000000){
 					return (result ^ 0xC0000000 ^ a8 ^ b8);
-				}
-				else
-				{
+				} else {
 					return (result ^ 0x40000000 ^ a8 ^ b8);
 				}
-			}
-			else
-			{
+			} else {
 				return (result ^ a8 ^ b8);
 			}
 		},
-		'compound': function(a, b, c, d, e, f, g, h)
-		{
+		'compound': function(a, b, c, d, e, f, g, h){
 			var trans = transforms,
 				add = trans.addUnsigned,
 				temp = add(b, add(add(trans[a](c, d, e), g), f));
@@ -73,15 +59,13 @@ provides: [String.toMD5]
 		}
 	};
 
-	function convertToArray(string)
-	{
+	function convertToArray(string){
 		var messageLength = string.length,
 			numberOfWords = (((messageLength + 8) - ((messageLength + 8) % 64)) / 64 + 1) * 16,
 			wordArray = new Array(),
 			wordCount = bytePosition = byteCount = 0;
 
-		while (byteCount < messageLength)
-		{
+		while (byteCount < messageLength){
 			wordCount = (byteCount - (byteCount % 4)) / 4;
 			bytePosition = (byteCount % 4) * 8;
 			wordArray[wordCount] = (wordArray[wordCount] | (string.charCodeAt(byteCount) << bytePosition));
@@ -97,22 +81,19 @@ provides: [String.toMD5]
 		return wordArray;
 	}
 
-	function convertToHex(string)
-	{
+	function convertToHex(string){
 		var result = temp = nibble = i = '';
 
-		for (i = 0; i <= 3; i++)
-		{
+		for (i = 0; i <= 3; i++){
 			nibble = (string >>> (i * 8)) & 255;
 			temp = "0" + nibble.toString(16);
-			result = result + temp.substr(temp.length-2,2);
+			result = result + temp.substr(temp.length-2, 2);
 		}
 
 		return result;
 	}
 
-	function md5(string)
-	{
+	function md5(string){
 		var t1, t2, t3, t4,
 			x = convertToArray(string.toUTF8()),
 			
@@ -124,8 +105,7 @@ provides: [String.toMD5]
 			s9 = 4, s10 = 11, s11 = 16, s12 = 23,
 			s13 = 6, s14 = 10, s15 = 15, s16 = 21;
 
-		for (var k = 0; k < x.length; k += 16)
-		{
+		for (var k = 0; k < x.length; k += 16){
 			t1 = a; t2 = b; t3 = c; t4 = d;
 
 			a = transforms.compound('f', a, b, c, d, 0xD76AA478, x[k + 0], s1);
@@ -203,8 +183,7 @@ provides: [String.toMD5]
 	}
 
 	String.implement({
-		'toMD5': function()
-		{
+		'toMD5': function(){
 			return md5(this);
 		}
 	});

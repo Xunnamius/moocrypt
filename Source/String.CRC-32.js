@@ -11,7 +11,7 @@ provides: [String.toCRC32]
 ...
 */
 
-(function() {
+(function(){
 
 	var table = new Array(
 		'00000000 77073096 EE0E612C 990951BA 076DC419 706AF48F E963A535 9E6495A3',
@@ -48,15 +48,13 @@ provides: [String.toCRC32]
 		'B3667A2E C4614AB8 5D681B02 2A6F2B94 B40BBE37 C30C8EA1 5A05DF1B 2D02EF8D'
 	).join(' ');
 
-	function crc32(string)
-	{
+	function crc32(string){
 		var a, b, c, d, e = 0 ^ (-1),
 		string = string.toUTF8();
 
-		for(a = 0; b = string.charCodeAt(a); a++)
-		{
+		for (a = 0; b = string.charCodeAt(a); a++){
 			c = (e ^ b) & 0xFF;
-			d = "0x" + table.substr(c * 9, 8);
+			d = '0x' + table.substr(c * 9, 8);
 			e = (e >>> 8) ^ d;
 		}
 
@@ -64,8 +62,7 @@ provides: [String.toCRC32]
 	}
 
 	String.implement({
-		'toCRC32': function()
-		{
+		'toCRC32': function(){
 			return crc32(this);
 		} 
 	});

@@ -14,17 +14,15 @@ provides: [String.toBase64, String.fromBase64]
 
 (function() {
 
-	var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+	var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
-	function encode(string)
-	{
+	function encode(string){
 		var a = 0,
 			result = '',
 			string = string.toUTF8(),
 			c1, c2, c3, e1, e2, e3, e4;
 
-		while (a < string.length)
-		{
+		while (a < string.length){
 
 			c1 = string.charCodeAt(a++);
 			c2 = string.charCodeAt(a++);
@@ -35,12 +33,9 @@ provides: [String.toBase64, String.fromBase64]
 			e3 = ((c2 & 15) << 2) | (c3 >> 6);
 			e4 = c3 & 63;
 
-			if (isNaN(c2))
-			{
+			if (isNaN(c2)){
 				e3 = e4 = 64;
-			}
-			else if (isNaN(c3))
-			{
+			} else if (isNaN(c3)){
 				e4 = 64;
 			}
 
@@ -51,15 +46,13 @@ provides: [String.toBase64, String.fromBase64]
 		return result;
 	}
 
-	function decode(string)
-	{
+	function decode(string){
 		var a = 0,
 			result = '',
 			string = string.replace(/[^A-Za-z0-9\+\/\=]/g, ''),
 			c1, c2, c3, e1, e2, e3, e4;
 
-		while (a < string.length)
-		{
+		while (a < string.length){
 			e1 = characters.indexOf(string.charAt(a++));
 			e2 = characters.indexOf(string.charAt(a++));
 			e3 = characters.indexOf(string.charAt(a++));
@@ -71,27 +64,23 @@ provides: [String.toBase64, String.fromBase64]
 
 			result += String.fromCharCode(c1);
 
-			if (e3 != 64) {
+			if (e3 != 64){
 				result += String.fromCharCode(c2);
 			}
 
-			if (e4 != 64)
-			{
+			if (e4 != 64){
 				result += String.fromCharCode(c3);
 			}
-
 		}
 
 		return result.fromUTF8();
 	}
 
 	String.implement({
-		'toBase64': function()
-		{
+		'toBase64': function(){
 			return encode(this);
 		},
-		'fromBase64': function()
-		{
+		'fromBase64': function(){
 			return decode(this);
 		}
 	});
