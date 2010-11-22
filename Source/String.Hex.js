@@ -29,7 +29,7 @@ provides: [String.toHex, String.fromHex]
 			var r = s = '',
 			e = this.length;
 
-			while(e >= 0)
+			while(e > 0)
 			{
 				s = e - 2;
 				r = String.fromCharCode('0x' + this.substring(s, e)) + r;
