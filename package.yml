@@ -8,7 +8,7 @@ authors: "[Christopher Pitt](http://mootools.net/forge/profile/sixtyseconds)"
 
 license: "MIT License"
 
-copyright: "&copy; 2010, Christopher Pitt"
+copyright: "&copy; 2010, Christopher Pitt + Enrique Erne"
 
 sources:
   - "Source/Array.Hex.js"
@@ -30,7 +30,7 @@ sources:
 
 author: sixtyseconds
 
-current: 0.2.0
+current: 0.3.0
 
 docs: http://github.com/sixtyseconds/mootools-string-cryptography/blob/master/README.md
 
