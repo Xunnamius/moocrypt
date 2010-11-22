@@ -1,4 +1,4 @@
-/*
+﻿/*
 ---
 name: String.Slug
 description: String slug conversion.
