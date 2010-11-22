@@ -1,7 +1,7 @@
 /*
 ---
-name: Array.Common
-description: Common Array hash-related methods.
+name: Array.Hex
+description: Array Hex encode
 license: MIT-style
 authors: [Christopher Pitt]
 requires: 

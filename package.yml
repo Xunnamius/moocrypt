@@ -11,7 +11,7 @@ license: "MIT License"
 copyright: "&copy; 2010, Christopher Pitt"
 
 sources:
-  - "Source/Array.Common.js"
+  - "Source/Array.Hex.js"
   - "Source/Array.RMD160.js"
   - "Source/Array.SHA-256.js"
   - "Source/Array.SHA-512.js"
