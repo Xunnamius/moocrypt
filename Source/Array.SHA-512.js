@@ -114,7 +114,7 @@ provides: [Array.toSHA512]
 	function sha512(bin, length){
 		var i, j,
 			words = new Array(),
-			hash = new Array();
+			hash = new Array(),
 
 			base = [
 				new Int64(0x6a09e667, -205731576),
@@ -125,7 +125,7 @@ provides: [Array.toSHA512]
 				new Int64(-1694144372, 0x2b3e6c1f),
 				new Int64(0x1f83d9ab, -79577749),
 				new Int64(0x5be0cd19, 0x137e2179)
-			];
+			],
 
 			t1 = new Int64(0, 0), t2 = new Int64(0, 0),
 

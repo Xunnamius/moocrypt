@@ -13,10 +13,11 @@ provides: [String.toUTF8, String.fromUTF8]
 (function(){
 
 	function toUTF8(string){
-		var a = 0,
+		var a, b,
 			result = '',
-			code = String.fromCharCode,
-			string = string.replace(/\r\n/g,"\n");
+			code = String.fromCharCode;
+
+		string = string.replace(/\r\n/g,"\n");
 
 		for (a = 0; b = string.charCodeAt(a); a++){
 			if (b < 128){
@@ -37,7 +38,7 @@ provides: [String.toUTF8, String.fromUTF8]
 	function fromUTF8(string){
 		var a = 0,
 			result = '',
-			c1 = c2 = c3 = 0;
+			c1 = 0, c2 = 0, c3 = 0;
 
 		while (a < string.length){
 			c1 = string.charCodeAt(a);

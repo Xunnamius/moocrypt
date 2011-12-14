@@ -70,7 +70,7 @@ provides: [String.toSlug]
 	function walk(string, replacements){
 		var result = string;
 	
-		for (key in replacements){
+		for (var key in replacements){
 			if (replacements.hasOwnProperty(key)){
 				result = result.replace(new RegExp(replacements[key], 'g'), key);
 			}
