@@ -63,7 +63,7 @@ provides: [String.toMD5]
 		var messageLength = string.length,
 			numberOfWords = (((messageLength + 8) - ((messageLength + 8) % 64)) / 64 + 1) * 16,
 			wordArray = new Array(),
-			wordCount = bytePosition = byteCount = 0;
+			wordCount, bytePosition, byteCount = 0;
 
 		while (byteCount < messageLength){
 			wordCount = (byteCount - (byteCount % 4)) / 4;
@@ -82,7 +82,7 @@ provides: [String.toMD5]
 	}
 
 	function convertToHex(string){
-		var result = temp = nibble = i = '';
+		var result = '', temp, nibble, i;
 
 		for (i = 0; i <= 3; i++){
 			nibble = (string >>> (i * 8)) & 255;
