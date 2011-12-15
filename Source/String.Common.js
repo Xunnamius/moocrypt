@@ -14,7 +14,7 @@ provides: [String.toBin]
 
 	String.implement({
 		'toBin': function(size, littleEndian){
-			var a, bin = Array(),
+			var a, bin = new Array(),
 				mask = (1 << size) - 1;
 
 			for (a = 0; a < this.length * size; a += size){

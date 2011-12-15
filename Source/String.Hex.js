@@ -24,7 +24,7 @@ provides: [String.toHex, String.fromHex]
 			return r;
 		},
 		'fromHex': function(){
-			var r = s = '',
+			var r = '', s = '',
 			e = this.length;
 
 			while(e > 0){
