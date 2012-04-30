@@ -12,22 +12,6 @@ license: "MIT License"
 
 copyright: "&copy; 2010, Christopher Pitt + Enrique Erne + Xunnamius"
 
-sources:
-  - "Source/Array.Hex.js"
-  - "Source/Array.RMD160.js"
-  - "Source/Array.SHA-256.js"
-  - "Source/Array.SHA-512.js"
-  - "Source/String.Base64.js"
-  - "Source/String.Common.js"
-  - "Source/String.CRC-32.js"
-  - "Source/String.Hex.js"
-  - "Source/String.MD5.js"
-  - "Source/String.RMD160.js"
-  - "Source/String.SHA-1.js"
-  - "Source/String.SHA-256.js"
-  - "Source/String.SHA-512.js"
-  - "Source/String.UTF-8.js"
-
 # Values for MooTools forge
 
 author: Xunnamius
