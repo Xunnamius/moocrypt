@@ -8,6 +8,6 @@ How to use
 
 Thanks
 ------
-Written in its entirety by Christopher Pitt.
-Maintained by Xunnamius.
+Written in its entirety by Christopher Pitt.<br />
+Maintained by Xunnamius.<br />
 Special thanks to Enrique Erne for a bunch of top-notch changes.
