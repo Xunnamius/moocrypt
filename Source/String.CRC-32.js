@@ -3,7 +3,7 @@
 name: String.CRC-32
 description: String CRC32 hashing.
 license: MIT-style
-authors: [Christopher Pitt, Enrique Erne]
+authors: [Christopher Pitt, Enrique Erne, Xunnamius]
 requires: 
   - Core/String
   - String.toUTF8

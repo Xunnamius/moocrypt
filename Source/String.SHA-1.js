@@ -3,7 +3,7 @@
 name: String.SHA-1
 description: String SHA1 hashing.
 license: MIT-style
-authors: [Christopher Pitt, Enrique Erne]
+authors: [Christopher Pitt, Enrique Erne, Xunnamius]
 requires: 
   - Core/String
   - String.toUTF8

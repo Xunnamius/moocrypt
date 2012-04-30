@@ -3,7 +3,7 @@
 name: String.Common
 description: Common String hash-related methods.
 license: MIT-style
-authors: [Christopher Pitt, Enrique Erne]
+authors: [Christopher Pitt, Enrique Erne, Xunnamius]
 requires: 
   - Core/String
 provides: [String.toBin]

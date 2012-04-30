@@ -3,7 +3,7 @@
 name: String.Slug
 description: String slug conversion.
 license: MIT-style
-authors: [Christopher Pitt, Enrique Erne]
+authors: [Christopher Pitt, Enrique Erne, Xunnamius]
 requires: 
   - Core/String
 provides: [String.toSlug]

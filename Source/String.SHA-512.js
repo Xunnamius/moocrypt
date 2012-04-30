@@ -3,7 +3,7 @@
 name: String.SHA-512
 description: String SHA512 hashing.
 license: MIT-style
-authors: [Christopher Pitt, Enrique Erne]
+authors: [Christopher Pitt, Enrique Erne, Xunnamius]
 requires:
   - Core/String
   - String.toUTF8

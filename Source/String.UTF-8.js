@@ -3,7 +3,7 @@
 name: String.UTF-8
 description: String UTF8 encoding.
 license: MIT-style
-authors: [Christopher Pitt, Enrique Erne]
+authors: [Christopher Pitt, Enrique Erne, Xunnamius]
 requires: 
   - Core/String
 provides: [String.toUTF8, String.fromUTF8]

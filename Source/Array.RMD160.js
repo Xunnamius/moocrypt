@@ -3,7 +3,7 @@
 name: Array.RMD160
 description: Array RMD160 processing, for little-endian dword arrays.
 license: MIT-style
-authors: [Christopher Pitt, Enrique Erne]
+authors: [Christopher Pitt, Enrique Erne, Xunnamius]
 requires: 
   - Core/Array
 provides: [Array.toRMD160]

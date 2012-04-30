@@ -3,7 +3,7 @@
 name: String.Hex
 description: String Hex encode/decode.
 license: MIT-style
-authors: [Christopher Pitt, Enrique Erne]
+authors: [Christopher Pitt, Enrique Erne, Xunnamius]
 requires: 
   - Core/String
 provides: [String.toHex, String.fromHex]
